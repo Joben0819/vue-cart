@@ -1,0 +1,1 @@
+{"root":["./vite.config.ts","./src/main.ts","./src/vite-env.d.ts","./src/@types/redux-persist.d.ts","./src/reducer/cart.ts","./src/router/router.d.ts","./src/store/store.ts","./src/app.vue","./src/components/header.vue","./src/components/body/body.vue","./src/pages/checkout.vue","./src/pages/home.vue"],"version":"5.6.3"}
