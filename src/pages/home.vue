@@ -36,7 +36,7 @@
     }
     store.dispatch(onCart({cart: total}))
   } 
-  const search: any = ref('ma')
+  const search: any = ref('')
   onMounted(()=>{
   const subscribe = store.subscribe(() => {
     cartData.value = store.getState().userCart.cart;
