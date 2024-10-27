@@ -36,7 +36,7 @@ const btn_Search = (data: string) => {
 <template>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <router-link :to="{name: 'Home', params:{}}" class="navbar-brand">
+    <router-link :to="{name: 'Home', query:{search: ''}}" class="navbar-brand">
       <font-awesome-icon :icon="['fas', 'house']" />
     </router-link>
     <ul class="navbar-nav me-auto mb-lg-0">

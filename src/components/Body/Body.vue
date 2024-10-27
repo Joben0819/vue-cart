@@ -68,7 +68,6 @@ interface Props {
 
 const props = defineProps<Props>();
 const bought = ref(props.buy.cartData);
-console.log(bought.value);
 
 onMounted(() => {
   bought.value = props.buy.cartData;

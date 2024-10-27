@@ -1,10 +1,11 @@
 <script setup lang="ts">
-  import Header from '../components/Header.vue';
   import Body from '../components/Body/Body.vue';
   import items from '../assets/json/ecommerce.json';
   import { inject, onMounted, ref } from 'vue';
   import { onCart } from '../reducer/Cart.ts';
   import { watch } from 'vue';
+  import { useRoute } from 'vue-router';
+  const route = useRoute()
   const store: any = inject('store')
   const product: any = ref(items)
   const cartData: any = ref(store.getState().userCart.cart)
@@ -41,11 +42,14 @@
   const subscribe = store.subscribe(() => {
     cartData.value = store.getState().userCart.cart;
   });
+  search.value = ''
+  console.log(route.query.search,"here unmount")
   return () => subscribe();
 })
-const searchValue = (data: string) => {
-  search.value = data
-}
+watch(route , ()=>{
+  search.value = route.query.search
+  console.log(route.query.search,"here")
+})
 watch(search, (newValue: any) => {
   const filter = items.filter((i:any) =>{
     const isMatch = i.id.toLowerCase().startsWith(newValue.toLowerCase());
@@ -59,7 +63,6 @@ watch(search, (newValue: any) => {
 
 <template>
   <div>
-    <Header :data={cartData} @modal="searchValue" />
     <div class="container mt-5 "  >
       <div class="row gap" >
         <Body :data={product} @click="add_cart" :buy="{cartData}" />

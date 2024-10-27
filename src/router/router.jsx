@@ -7,7 +7,12 @@ import Checkout from '../pages/checkout.vue';
 
 const routes = [
   {
-    path: '/',
+    path: `/search`,
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: `/`,
     name: 'Home',
     component: Home,
   },
