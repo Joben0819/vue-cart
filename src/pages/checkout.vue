@@ -1,6 +1,5 @@
 <script setup lang="ts">
     import { inject, onMounted, ref } from 'vue';
-    import Header from '../components/Header.vue';
     import { onCart } from '../reducer/Cart';
     import festive from "/src/assets/img/Festive.svg"; 
     import chevron from "/src/assets/img/Chevron.svg"; 
@@ -38,8 +37,8 @@
     const Quantity = (data: any, value: number) => {
         const map = cartData.value.map((id: any) =>{
           if(id.id === data.id){
-            if(id.quantity < value){
-                alert('on maximum')
+            if(id.total < value){
+                alert('on maximum');
                 return {...id}
             }else{
                 return {...id , quantity: value}
@@ -73,7 +72,6 @@ console.log(updatevalue.value, 'updatevalue')
 
 <template>
     <div>
-        <Header :data={cartData}  />
         <section className="title">
             <div className="left">
                 <h1>SHOP BAG</h1>
@@ -191,5 +189,18 @@ console.log(updatevalue.value, 'updatevalue')
             }
         }
     }
+}
+@media screen and (max-width: 600px) and (min-width: 200px) {
+    .purchased{
+        flex-direction: column;
+        .item{
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+        .buy{
+            width: 100%;
+        }
+    }
+    
 }
 </style>

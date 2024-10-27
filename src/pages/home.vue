@@ -24,17 +24,22 @@
               return {...id , quantity: id.quantity + 1}
             }
           }else{
-            return {...id}
+            return {...id, quantity: 1}
           }
       })
       if(!filter){
-      total = [...cartData.value, data]
+      const value: any = [data]
+      const add = value.map((id: any) =>{return {...id , quantity:  1}})
+      total = [...cartData.value, ...add]
       }else{
         total = [...map]
       }
     }else{
-      total = [data]
+      const value: any = [data]
+      const map = value.map((id: any) =>{return {...id , quantity:  1}})
+      total = map
     }
+    console.log(total)
     store.dispatch(onCart({cart: total}))
   } 
   const search: any = ref('')
@@ -64,7 +69,7 @@ watch(search, (newValue: any) => {
 <template>
   <div>
     <div class="container mt-5 "  >
-      <div class="row gap" >
+      <div class="row gap justify" >
         <Body :data={product} @click="add_cart" :buy="{cartData}" />
       </div>
     </div>
@@ -76,5 +81,12 @@ watch(search, (newValue: any) => {
 .gap{
   column-gap: 1rem;
   row-gap: 1rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 200px) {
+  .justify{
+    justify-content: center;
+  }
+  
 }
 </style>
