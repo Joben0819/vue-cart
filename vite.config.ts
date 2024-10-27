@@ -5,4 +5,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/vue-cart/',
   plugins: [vue()],
+  build:{
+    outDir: 'dist'
+  },
+  server:{
+    port: 3000,
+    open: true
+  },
+
 })

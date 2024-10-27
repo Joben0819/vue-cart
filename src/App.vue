@@ -1,7 +1,5 @@
 
 <template>
-  sass
-  
   <router-view></router-view>
 </template>
 
